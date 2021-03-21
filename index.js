@@ -1,41 +1,14 @@
-const DiscordJS = require('discord.js');
-require('dotenv').config();
+require('dotenv').config()
 
-class DiscordBot {
-    client = null;
+const DiscordJS = require('discord.js')
+const client = new DiscordJS.Client()
+const guildID = '823035262547656774'
 
-    onReady()
-    {
-        console.log(`Logged in as ${this.client.user.tag}!`);
-    }
+client.on('ready', async () => {
+    console.log(`Logged in as ${client.user.tag}!`)
+    const commands = await client.api.applications(client.user.id).guilds(guildID).commands.get()
+    console.log(commands)
 
-    onDebug(str)
-    {
-        //console.log(`[DBG] ${str}`);
-    }
+})
 
-    LoadModules()
-    {
-
-    }
-
-    InitCallbacks()
-    {
-        this.onReady.bind(this)
-        this.onDebug.bind(this)
-        this.client.on('ready', this.onReady);
-        this.client.on('debug', this.onDebug);
-        console.log("Callbacks ready");
-    }
-
-    StartupBot()
-    {
-        this.client = new DiscordJS.Client();
-        this.InitCallbacks();
-        this.client.login(process.env.BOT_TOKEN);
-        console.log("Logging in");
-    }
-}
-
-discordBot = new DiscordBot();
-discordBot.StartupBot();
+client.login(process.env.BOT_TOKEN)
