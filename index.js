@@ -6,8 +6,6 @@ class DiscordBot {
 
     onReady()
     {
-        console.log("Called");
-        console.log(`client - > ${this.client}`)
         console.log(`Logged in as ${this.client.user.tag}!`);
     }
 
@@ -23,6 +21,8 @@ class DiscordBot {
 
     InitCallbacks()
     {
+        this.onReady.bind(this)
+        this.onDebug.bind(this)
         this.client.on('ready', this.onReady);
         this.client.on('debug', this.onDebug);
         console.log("Callbacks ready");
