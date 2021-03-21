@@ -3,7 +3,6 @@ require('dotenv').config()
 const DiscordJS = require('discord.js')
 const WOKCommands = require('wokcommands')
 const client = new DiscordJS.Client()
-const guildID = '823035262547656774'
 
 client.on('ready', async () => {
     const disabledDefaultCommands = [
@@ -16,7 +15,7 @@ client.on('ready', async () => {
 
     new WOKCommands(client, {
         commandsDir: 'commands',
-        testServers: [guildID],
+        testServers: [process.env.DEV_GUILD],
         showWarns: false,
         disabledDefaultCommands
     })
