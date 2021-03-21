@@ -19,6 +19,7 @@
   "homepage": "https://github.com/bludotbat/slashcommands-base#readme",
   "dependencies": {
     "discord.js": "^12.5.1",
-    "dotenv": "^8.2.0"
+    "dotenv": "^8.2.0",
+    "wokcommands": "^1.2.8"
   }
 }

@@ -1,10 +1,8 @@
-module.exports = (client, helpers) => { 
-    var modules = {}
-
-    modules.runCommand = async (interaction) =>
-    {
-        helpers.slash.reply(interaction, "pong!")
+module.exports = {
+    slash: true,
+    testOnly: true,
+    description: "ping command",
+    callback: async ({}) => {
+        return "pong bro"
     }
-
-    return modules
 }
